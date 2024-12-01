@@ -1,0 +1,5 @@
+{5d5f85ca-c423-462b-acdd-ff4b81a6767f} bank:/Master
+{c542a51e-b558-0a69-2a94-75b5705570e7} bank:/Master.strings
+{e32ffc97-cdcb-49a3-b71c-34b21ee5f1bf} bus:/
+{c0400a4a-5df1-4664-a92f-63ff79cddbab} bus:/Reverb
+{bc2bc93a-fda6-48a7-a18e-a08c5eed8c49} snapshot:/Pasos

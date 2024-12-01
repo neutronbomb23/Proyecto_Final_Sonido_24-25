@@ -547,7 +547,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: 
+  TargetBankFolder: Build/Desktop
   EventLinkage: 0
   LoggingLevel: 2
   SpeakerModeSettings: []
@@ -560,7 +560,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Steps
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7284991103260385024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Steps.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/ProjectoFinal/Build/Desktop/Steps.bank
+  Name: Steps
+  StudioPath: bank:/Steps
+  lastModified: 638686724793142706
+  FileSizes:
+  - Name: Desktop
+    Value: 579040
+  Exists: 1
 --- !u!114 &-1623756688293806519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +35,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638686550074138673
+  lastModified: 638686724788939853
   FileSizes:
   - Name: Desktop
-    Value: 712
+    Value: 942
   Exists: 1
 --- !u!114 &-1181957681514290520
 MonoBehaviour:
@@ -35,10 +55,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638686550074128686
+  lastModified: 638686724788929856
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1512
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -55,11 +75,124 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: -1623756688293806519}
   - {fileID: -1181957681514290520}
-  EditorEvents: []
+  - {fileID: -7284991103260385024}
+  EditorEvents:
+  - {fileID: 7227157217077673793}
+  - {fileID: 7316995992624661541}
+  - {fileID: 7698638779439085161}
+  - {fileID: 8145580707651767838}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1181957681514290520}
   StringsBanks:
   - {fileID: -1623756688293806519}
-  cacheTime: 638686550074138673
+  cacheTime: 638686724793142706
   cacheVersion: 131621
+--- !u!114 &7227157217077673793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Pasos
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Pasos
+  Guid:
+    Data1: -1137981126
+    Data2: 1218968998
+    Data3: -1935634783
+    Data4: 1233972574
+  Banks:
+  - {fileID: -1181957681514290520}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &7316995992624661541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pasos_Nieve
+  m_EditorClassIdentifier: 
+  Path: event:/Pasos_Nieve
+  Guid:
+    Data1: 1845129352
+    Data2: 1328139308
+    Data3: -2011395704
+    Data4: -1765878686
+  Banks:
+  - {fileID: -7284991103260385024}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17369
+--- !u!114 &7698638779439085161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pasos_Desierto
+  m_EditorClassIdentifier: 
+  Path: event:/Pasos_Desierto
+  Guid:
+    Data1: -741735028
+    Data2: 1319735108
+    Data3: -201103994
+    Data4: 752400692
+  Banks:
+  - {fileID: -7284991103260385024}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2950
+--- !u!114 &8145580707651767838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pasos_Bosque
+  m_EditorClassIdentifier: 
+  Path: event:/Pasos_Bosque
+  Guid:
+    Data1: 881149421
+    Data2: 1311683524
+    Data3: -1067865418
+    Data4: 539986337
+  Banks:
+  - {fileID: -7284991103260385024}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 30671
