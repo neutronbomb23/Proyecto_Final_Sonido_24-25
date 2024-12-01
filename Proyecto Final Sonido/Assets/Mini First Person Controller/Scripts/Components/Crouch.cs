@@ -6,7 +6,7 @@ public class Crouch : MonoBehaviour
 
     [Header("Slow Movement")]
     [Tooltip("Movement to slow down when crouched.")]
-    public FirstPersonMovement movement;
+    public CharacterController3D movement;
     [Tooltip("Movement speed when crouched.")]
     public float movementSpeed = 2;
 
@@ -29,7 +29,7 @@ public class Crouch : MonoBehaviour
     void Reset()
     {
         // Try to get components.
-        movement = GetComponentInParent<FirstPersonMovement>();
+        movement = GetComponentInParent<CharacterController3D>();
         headToLower = movement.GetComponentInChildren<Camera>().transform;
         colliderToLower = movement.GetComponentInChildren<CapsuleCollider>();
     }
@@ -123,18 +123,18 @@ public class Crouch : MonoBehaviour
         if (state)
         {
             // Try to add the SpeedOverride to the movement component.
-            if (!movement.speedOverrides.Contains(SpeedOverride))
-            {
-                movement.speedOverrides.Add(SpeedOverride);
-            }
+            //if (!movement.speedOverrides.Contains(SpeedOverride))
+            //{
+            //    movement.speedOverrides.Add(SpeedOverride);
+            //}
         }
         else
         {
             // Try to remove the SpeedOverride from the movement component.
-            if (movement.speedOverrides.Contains(SpeedOverride))
-            {
-                movement.speedOverrides.Remove(SpeedOverride);
-            }
+            //if (movement.speedOverrides.Contains(SpeedOverride))
+            //{
+            //    movement.speedOverrides.Remove(SpeedOverride);
+            //}
         }
     }
 

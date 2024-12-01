@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FirstPersonAudio : MonoBehaviour
 {
-    public FirstPersonMovement character;
+    public CharacterController3D character;
     public GroundCheck groundCheck;
 
     [Header("Step")]
@@ -35,7 +35,7 @@ public class FirstPersonAudio : MonoBehaviour
     void Reset()
     {
         // Setup stuff.
-        character = GetComponentInParent<FirstPersonMovement>();
+        character = GetComponentInParent<CharacterController3D>();
         groundCheck = (transform.parent ?? transform).GetComponentInChildren<GroundCheck>();
         stepAudio = GetOrCreateAudioSource("Step Audio");
         runningAudio = GetOrCreateAudioSource("Running Audio");
@@ -68,18 +68,18 @@ public class FirstPersonAudio : MonoBehaviour
         float velocity = Vector3.Distance(CurrentCharacterPosition, lastCharacterPosition);
         if (velocity >= velocityThreshold && groundCheck && groundCheck.isGrounded)
         {
-            if (crouch && crouch.IsCrouched)
-            {
-                SetPlayingMovingAudio(crouchedAudio);
-            }
-            else if (character.IsRunning)
-            {
-                SetPlayingMovingAudio(runningAudio);
-            }
-            else
-            {
-                SetPlayingMovingAudio(stepAudio);
-            }
+            //if (crouch && crouch.IsCrouched)
+            //{
+            //    SetPlayingMovingAudio(crouchedAudio);
+            //}
+            //else if (character.IsRunning)
+            //{
+            //    SetPlayingMovingAudio(runningAudio);
+            //}
+            //else
+            //{
+            //    SetPlayingMovingAudio(stepAudio);
+            //}
         }
         else
         {
