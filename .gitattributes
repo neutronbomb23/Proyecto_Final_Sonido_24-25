@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
+*.xml text eol=lf
+*.gitignore text eol=lf
 * text=auto
+*.sh text eol=lf
+*.bat text eol=crlf
+Temp/ -text
