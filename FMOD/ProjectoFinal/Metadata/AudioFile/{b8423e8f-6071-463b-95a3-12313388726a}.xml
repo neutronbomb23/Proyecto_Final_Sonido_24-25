@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b8423e8f-6071-463b-95a3-12313388726a}">
+		<property name="assetPath">
+			<value>Pasito a pasito/desert_steps.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.5265306122448981</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5b53dae2-b833-4276-82e7-a17109501c5a}</destination>
+		</relationship>
+	</object>
+</objects>
