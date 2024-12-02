@@ -20,6 +20,60 @@ MonoBehaviour:
   - Name: Desktop
     Value: 579040
   Exists: 1
+--- !u!114 &-4798473682288739766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Forest_Ambient
+  m_EditorClassIdentifier: 
+  Path: event:/Forest_Ambient
+  Guid:
+    Data1: -224324957
+    Data2: 1074485889
+    Data3: 1170387075
+    Data4: -165967552
+  Banks:
+  - {fileID: -480004910177035769}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 10000
+  Length: 2000
+--- !u!114 &-3924828806143687614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Desert_Ambient
+  m_EditorClassIdentifier: 
+  Path: event:/Desert_Ambient
+  Guid:
+    Data1: 1806560231
+    Data2: 1082842612
+    Data3: -845738081
+    Data4: 2041645603
+  Banks:
+  - {fileID: -480004910177035769}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 10000
+  Length: 6000
 --- !u!114 &-1623756688293806519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,10 +89,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638686724788939853
+  lastModified: 638687416046776914
   FileSizes:
   - Name: Desktop
-    Value: 942
+    Value: 1130
   Exists: 1
 --- !u!114 &-1181957681514290520
 MonoBehaviour:
@@ -55,10 +109,30 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638686724788929856
+  lastModified: 638687416046766930
   FileSizes:
   - Name: Desktop
     Value: 1512
+  Exists: 1
+--- !u!114 &-480004910177035769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/AmbienSounds.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/ProjectoFinal/Build/Desktop/AmbienSounds.bank
+  Name: AmbienSounds
+  StudioPath: bank:/AmbienSounds
+  lastModified: 638687442238115190
+  FileSizes:
+  - Name: Desktop
+    Value: 11524864
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -76,18 +150,49 @@ MonoBehaviour:
   - {fileID: -1623756688293806519}
   - {fileID: -1181957681514290520}
   - {fileID: -7284991103260385024}
+  - {fileID: -480004910177035769}
   EditorEvents:
   - {fileID: 7227157217077673793}
   - {fileID: 7316995992624661541}
   - {fileID: 7698638779439085161}
   - {fileID: 8145580707651767838}
+  - {fileID: 5354187084470099334}
+  - {fileID: -4798473682288739766}
+  - {fileID: -3924828806143687614}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1181957681514290520}
   StringsBanks:
   - {fileID: -1623756688293806519}
-  cacheTime: 638686724793142706
+  cacheTime: 638687442238115190
   cacheVersion: 131621
+--- !u!114 &5354187084470099334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Snow_Ambient
+  m_EditorClassIdentifier: 
+  Path: event:/Snow_Ambient
+  Guid:
+    Data1: 1052411662
+    Data2: 1193421323
+    Data3: -463091574
+    Data4: -771807840
+  Banks:
+  - {fileID: -480004910177035769}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7500
 --- !u!114 &7227157217077673793
 MonoBehaviour:
   m_ObjectHideFlags: 0
