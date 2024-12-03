@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Steps.bank
   Name: Steps
   StudioPath: bank:/Steps
-  lastModified: 638686724793142706
+  lastModified: 638688653593378868
   FileSizes:
   - Name: Desktop
-    Value: 579040
+    Value: 1029600
   Exists: 1
 --- !u!114 &-4798473682288739766
 MonoBehaviour:
@@ -46,7 +46,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 10000
-  Length: 2000
+  Length: 3400
 --- !u!114 &-3924828806143687614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/AmbienSounds.bank
   Name: AmbienSounds
   StudioPath: bank:/AmbienSounds
-  lastModified: 638687442238115190
+  lastModified: 638688653339056935
   FileSizes:
   - Name: Desktop
-    Value: 11524864
+    Value: 29766464
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -164,7 +164,7 @@ MonoBehaviour:
   - {fileID: -1181957681514290520}
   StringsBanks:
   - {fileID: -1623756688293806519}
-  cacheTime: 638687442238115190
+  cacheTime: 638688653593378868
   cacheVersion: 131621
 --- !u!114 &5354187084470099334
 MonoBehaviour:
@@ -267,13 +267,13 @@ MonoBehaviour:
     Data4: 752400692
   Banks:
   - {fileID: -7284991103260385024}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2950
+  Length: 34280
 --- !u!114 &8145580707651767838
 MonoBehaviour:
   m_ObjectHideFlags: 0

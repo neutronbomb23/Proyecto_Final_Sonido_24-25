@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
+using System;
 
-public class CharacterController3D : MonoBehaviour
-{
+public class CharacterController3D : MonoBehaviour {
     public float speed = 6.0f;
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
@@ -12,39 +13,42 @@ public class CharacterController3D : MonoBehaviour
     public EventReference jumpEvent;  // Evento para el salto
     public EventReference landEvent;  // Evento para el aterrizaje
 
-    private FMOD.Studio.EventInstance walkInstance;
     private CharacterController controller;
     private Vector3 velocity;
     private float verticalLookRotation = 0f;
     private bool isWalking = false;
     private bool wasGrounded = true;
 
+
+    public enum FootstepType{
+        Desert = 0,
+        Snow = 1,
+        Forest = 2
+    }
+
+    [SerializeField]
+    private string[] footstepEvents = {
+        "event:/Pasos_Desierto",
+        "event:/Pasos_Nieve",
+        "event:/Pasos_Bosque"
+    };
+
+    private EventInstance[] footstepInstances; // Array de instancias de eventos
+    FootstepType currentFootsteps;
+
     public Transform cameraTransform;
 
-    private void Start()
-    {
+    private void Start() {
         controller = GetComponent<CharacterController>();
 
-        // Verificar que el evento no sea nulo
-        if (walkEvent.IsNull)
-        {
-            Debug.LogError("walkEvent no está asignado en el Inspector.");
-            return;
-        }
+        footstepInstances = new EventInstance[footstepEvents.Length];
 
-        // Lock the cursor to the game screen
-        Cursor.lockState = CursorLockMode.Locked;
+        for (int i = 0; i < footstepEvents.Length; i++) {
+            footstepInstances[i] = RuntimeManager.CreateInstance(footstepEvents[i]);
+        }
+        currentFootsteps = FootstepType.Forest;
 
-        // Crear instancia del evento de caminar
-        walkInstance = RuntimeManager.CreateInstance(walkEvent);
-        if (walkInstance.isValid())
-        {
-            Debug.Log("Walk instance created successfully.");
-        }
-        else
-        {
-            Debug.LogError("No se pudo crear la instancia del evento de caminar.");
-        }
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the game screen
     }
 
     private void Update()
@@ -55,9 +59,6 @@ public class CharacterController3D : MonoBehaviour
 
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * speed * Time.deltaTime);
-
-        // Handle walking sound
-        HandleWalkingSound(move);
 
         // Apply gravity
         if (controller.isGrounded && velocity.y < 0)
@@ -92,38 +93,8 @@ public class CharacterController3D : MonoBehaviour
         verticalLookRotation -= mouseY;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
-    }
 
-    private void HandleWalkingSound(Vector3 move)
-    {
-        // Verificamos el estado de reproducción
-        FMOD.Studio.PLAYBACK_STATE playbackState;
-        walkInstance.getPlaybackState(out playbackState);
-
-        // Umbral de velocidad mínimo para activar el sonido
-        float moveThreshold = 0.05f; // Ajusta este valor según el comportamiento que desees
-
-        // Comprobamos si estamos moviéndonos con un valor significativo
-        bool isMoving = move.magnitude > moveThreshold;
-
-        if (controller.isGrounded && isMoving) // Si el jugador está en el suelo y se está moviendo
-        {
-            if (playbackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)  // Si no está reproduciendo
-            {
-                walkInstance.start();  // Empezamos el sonido si no está ya sonando
-                isWalking = true;
-                Debug.Log("Walking sound started.");
-            }
-        }
-        else
-        {
-            if (isWalking)  // Solo detenemos el sonido si estaba sonando
-            {
-                walkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE); // Detener inmediatamente el sonido
-                isWalking = false;
-                Debug.Log("Walking sound stopped.");
-            }
-        }
+        UpdateSound(move);
     }
 
 
@@ -140,10 +111,62 @@ public class CharacterController3D : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (walkInstance.isValid())
+        // Liberar recursos de todas las instancias
+        foreach (var instance in footstepInstances)
         {
-            walkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            walkInstance.release();
+            if (instance.isValid())
+            {
+                instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                instance.release();
+            }
         }
+    }
+
+    private void UpdateSound(Vector3 move)
+    {
+        // Inicia el evento de pasos si el jugador tiene una velocidad en X y está en el suelo
+        if (move.x != 0 && controller.isGrounded)
+        {
+            // Obtener el estado de reproducción del evento
+            PLAYBACK_STATE playbackState;
+            footstepInstances[(int)currentFootsteps].getPlaybackState(out playbackState);
+
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED)) {
+                footstepInstances[(int)currentFootsteps].start();
+            }
+        }
+        else { // De lo contrario, detener el evento de pasos
+            Debug.Log(currentFootsteps);
+            Debug.Log(footstepInstances);
+            footstepInstances[(int)currentFootsteps].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Verifica la capa del objeto con el que colisiona
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Desert") && currentFootsteps != FootstepType.Desert)
+        {
+            ChangeFootstepType(FootstepType.Desert);
+        }
+        else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Snow") && currentFootsteps != FootstepType.Snow)
+        {
+            ChangeFootstepType(FootstepType.Snow);
+        }
+        else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Forest") && currentFootsteps != FootstepType.Forest)
+        {
+            ChangeFootstepType(FootstepType.Forest);
+        }
+    }
+
+    private void ChangeFootstepType(FootstepType newFootstepType)
+    {
+        // Detener el sonido actual
+        footstepInstances[(int)currentFootsteps].stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        // Cambiar al nuevo tipo de terreno
+        currentFootsteps = newFootstepType;
+
+        Debug.Log($"Cambiado a pasos de: {currentFootsteps}");
     }
 }

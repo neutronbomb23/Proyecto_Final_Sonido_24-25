@@ -5,7 +5,7 @@
 			<value>Pasos_Desierto</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{24d8bbb4-91a9-4362-af4b-be2142129af3}</destination>
@@ -39,7 +39,7 @@
 	</object>
 	<object class="MasterTrack" id="{0ab14aeb-baab-4da4-bd77-99a9a3c8fcd3}">
 		<relationship name="modules">
-			<destination>{d44e61ce-878c-4265-a7f2-c5b3c3bd7a89}</destination>
+			<destination>{3d1a3f40-0a0d-4aa9-b49d-87a16ae4f549}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8041a18f-58aa-4b84-a432-037f0f5691a2}</destination>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{afb1d720-7101-486b-99f8-408598a2bbc2}" />
 	<object class="Timeline" id="{35a37490-ada2-467b-bbe0-ad1c4e682bc6}">
 		<relationship name="modules">
-			<destination>{d44e61ce-878c-4265-a7f2-c5b3c3bd7a89}</destination>
+			<destination>{3d1a3f40-0a0d-4aa9-b49d-87a16ae4f549}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{019c2590-01d0-4e95-8f40-0b94c72f93e7}</destination>
@@ -77,12 +77,15 @@
 			<destination>{b0d9493f-82d4-4666-947d-d6a86d7234c4}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{d44e61ce-878c-4265-a7f2-c5b3c3bd7a89}">
+	<object class="SingleSound" id="{3d1a3f40-0a0d-4aa9-b49d-87a16ae4f549}">
 		<property name="length">
-			<value>2.9500000000000002</value>
+			<value>34.280833333333248</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>18.599999999999984</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{b8423e8f-6071-463b-95a3-12313388726a}</destination>
+			<destination>{6f6a2b6b-5125-4d81-9019-ebcc1ee427a2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{06a6232e-c1bb-404b-b117-35127e8d234f}">
@@ -96,7 +99,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>2.9500000000000002</value>
+			<value>6</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{35a37490-ada2-467b-bbe0-ad1c4e682bc6}</destination>
