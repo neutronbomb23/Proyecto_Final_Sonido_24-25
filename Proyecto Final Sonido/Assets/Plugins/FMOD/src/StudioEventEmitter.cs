@@ -57,6 +57,30 @@ namespace FMODUnity
 
         public bool IsActive { get; private set; }
 
+        public float FadeInDuration = 3.0f; // Duración del fade-in en segundos
+        public float FadeOutDuration = 3.0f; // Duración del fade-out en segundos
+
+        private IEnumerator FadeVolume(float targetVolume, float duration)
+        {
+            if (instance.isValid())
+            {
+                float currentVolume;
+                instance.getVolume(out currentVolume);
+                float timeElapsed = 0f;
+
+                while (timeElapsed < duration)
+                {
+                    timeElapsed += Time.deltaTime;
+                    float newVolume = Mathf.Lerp(currentVolume, targetVolume, timeElapsed / duration);
+                    instance.setVolume(newVolume);
+                    yield return null;
+                }
+
+                instance.setVolume(targetVolume);
+            }
+        }
+
+
         private float MaxDistance
         {
             get
@@ -251,7 +275,6 @@ namespace FMODUnity
                 instance.clearHandle();
             }
 
-            // Let previous oneshot instances play out
             if (isOneshot && instance.isValid())
             {
                 instance.release();
@@ -265,32 +288,11 @@ namespace FMODUnity
             {
                 eventDescription.createInstance(out instance);
 
-                // Only want to update if we need to set 3D attributes
                 if (is3D)
                 {
                     var transform = GetComponent<Transform>();
-#if UNITY_PHYSICS_EXIST
-                    if (GetComponent<Rigidbody>())
-                    {
-                        Rigidbody rigidBody = GetComponent<Rigidbody>();
-                        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject, rigidBody));
-                        RuntimeManager.AttachInstanceToGameObject(instance, gameObject, rigidBody);
-                    }
-                    else
-#endif
-#if UNITY_PHYSICS2D_EXIST
-                    if (GetComponent<Rigidbody2D>())
-                    {
-                        var rigidBody2D = GetComponent<Rigidbody2D>();
-                        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
-                        RuntimeManager.AttachInstanceToGameObject(instance, gameObject, rigidBody2D);
-                    }
-                    else
-#endif
-                    {
-                        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
-                        RuntimeManager.AttachInstanceToGameObject(instance, gameObject, NonRigidbodyVelocity);
-                    }
+                    instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+                    RuntimeManager.AttachInstanceToGameObject(instance, gameObject, NonRigidbodyVelocity);
                 }
             }
 
@@ -310,7 +312,9 @@ namespace FMODUnity
                 instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
             }
 
+            instance.setVolume(0); // Comienza en volumen 0
             instance.start();
+            StartCoroutine(FadeVolume(1f, FadeInDuration)); // Realiza el fade-in
 
             hasTriggered = true;
         }
@@ -332,8 +336,10 @@ namespace FMODUnity
 
             if (instance.isValid())
             {
+                StartCoroutine(FadeVolume(0f, FadeOutDuration)); // Realiza el fade-out
                 instance.stop(AllowFadeout ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE);
                 instance.release();
+
                 if (!AllowFadeout)
                 {
                     instance.clearHandle();
