@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Steps.bank
   Name: Steps
   StudioPath: bank:/Steps
-  lastModified: 638688653593378868
+  lastModified: 638689350760394808
   FileSizes:
   - Name: Desktop
     Value: 1029600
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638687416046776914
+  lastModified: 638689350746786966
   FileSizes:
   - Name: Desktop
     Value: 1130
@@ -109,7 +109,7 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638687416046766930
+  lastModified: 638689350746766771
   FileSizes:
   - Name: Desktop
     Value: 1512
@@ -129,10 +129,10 @@ MonoBehaviour:
   Path: ../FMOD/ProjectoFinal/Build/Desktop/AmbienSounds.bank
   Name: AmbienSounds
   StudioPath: bank:/AmbienSounds
-  lastModified: 638688653339056935
+  lastModified: 638689364677389954
   FileSizes:
   - Name: Desktop
-    Value: 29766464
+    Value: 20994144
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -164,7 +164,7 @@ MonoBehaviour:
   - {fileID: -1181957681514290520}
   StringsBanks:
   - {fileID: -1623756688293806519}
-  cacheTime: 638688653593378868
+  cacheTime: 638689364677389954
   cacheVersion: 131621
 --- !u!114 &5354187084470099334
 MonoBehaviour:
@@ -190,8 +190,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 10000
   Length: 7500
 --- !u!114 &7227157217077673793
 MonoBehaviour:

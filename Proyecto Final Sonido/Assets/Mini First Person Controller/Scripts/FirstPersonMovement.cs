@@ -5,13 +5,11 @@ using System;
 
 public class CharacterController3D : MonoBehaviour {
     public float speed = 6.0f;
-    public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
     public float mouseSensitivity = 100f;
 
     public EventReference walkEvent;  // Evento para pasos al caminar
-    public EventReference jumpEvent;  // Evento para el salto
-    public EventReference landEvent;  // Evento para el aterrizaje
+
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -69,19 +67,6 @@ public class CharacterController3D : MonoBehaviour {
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // Jump
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            PlayOneShotSound(jumpEvent);
-        }
-
-        // Handle landing sound
-        if (!wasGrounded && controller.isGrounded)
-        {
-            PlayOneShotSound(landEvent);
-        }
-
         wasGrounded = controller.isGrounded;
 
         // Mouse look
@@ -125,7 +110,7 @@ public class CharacterController3D : MonoBehaviour {
     private void UpdateSound(Vector3 move)
     {
         // Inicia el evento de pasos si el jugador tiene una velocidad en X y está en el suelo
-        if (move.x != 0 && controller.isGrounded)
+        if ((move.x != 0 || move.z != 0) && controller.isGrounded)
         {
             // Obtener el estado de reproducción del evento
             PLAYBACK_STATE playbackState;
